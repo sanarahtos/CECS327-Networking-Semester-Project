@@ -1,0 +1,7 @@
+FROM python:3.9
+
+WORKDIR /app
+
+COPY peer2.py .
+
+CMD ["python", "peer2.py"]

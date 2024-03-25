@@ -1,0 +1,23 @@
+version: '3'
+
+networks: # you have to create mynetwork in docker too, "docker network create mynetwork"
+  mynetwork:
+
+services:
+  peer1:
+    build:
+      context: .
+      dockerfile: Dockerfile1
+    networks:
+      - mynetwork
+    tty: true # tty and stdin_open are used since we're running an interactive bash so that we can input stuff
+    stdin_open: true 
+
+  peer2:
+    build:
+      context: .
+      dockerfile: Dockerfile2
+    networks:
+      - mynetwork
+    tty: true
+    stdin_open: true
